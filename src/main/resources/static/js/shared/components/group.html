@@ -1,0 +1,6 @@
+<fieldset class="form-group">
+    <legend>{{$ctrl.group.groupDesc}}</legend>
+	<div class="form-group row">
+		<question ng-repeat="question in $ctrl.group.questions" question="question" />
+	</div>
+</fieldset>
