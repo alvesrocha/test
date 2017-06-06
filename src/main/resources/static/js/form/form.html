@@ -1,2 +1,2 @@
 <h1>Form</h1>
-<group ng-repeat="group in controller.groups" group=group />
+<group ng-repeat="group in controller.data" group="group" on-update="controller.updateQuestion(question, values)"/>
