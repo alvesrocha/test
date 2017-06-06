@@ -1,1 +1,1 @@
-<select class="form-control" id="{{$ctrl.question.questionId}}" ng-model="$ctrl.value" ng-options="label.labelDesc for label in $ctrl.question.labels"></select>
+<select class="form-control" id="{{$ctrl.question.questionId}}" ng-model="$ctrl.value" ng-change="$ctrl.change()" ng-options="label.labelDesc for label in $ctrl.question.labels"></select>

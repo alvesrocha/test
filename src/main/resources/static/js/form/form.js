@@ -18,7 +18,7 @@ module.factory('dataFactory', ['$http', function($http) {
     				questions : [ {
     					questionName : 'A1',
     					questionId : 1,
-    					questionType : 'text',
+    					questionType : 'integer',
     					questionDesc : 'Question 1'
     				}, {
     					questionName : 'B1',

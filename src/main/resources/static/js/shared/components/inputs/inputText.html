@@ -1,1 +1,1 @@
-<input class="form-control" type="text" id="{{$ctrl.question.questionId}}" ng-model="$ctrl.value" g-value="$ctrl.value" />
+<input class="form-control" type="{{$ctrl.type}}" id="{{$ctrl.question.questionId}}" id="question_{{$ctrl.question.questionId}}" ng-model="$ctrl.value" ng-value="$ctrl.value" ng-change="$ctrl.change()" ng-model-options="{updateOn: 'blur'}"/>
