@@ -4,7 +4,7 @@ angular.module('form').factory('questionFactory', function() {
 	
 	var inputTypesMapping = {
 			text : {type:'text', template: 'js/shared/components/inputs/inputText.html'},
-			integer : {type:'number', template: 'js/shared/components/inputs/inputText.html', defPattern: '\\d*'},
+			integer : {type:'number', template: 'js/shared/components/inputs/inputText.html', defPattern: '[0-9]*'},
 			real : {type:'number', template: 'js/shared/components/inputs/inputText.html'},
 			dropdown : {template: 'js/shared/components/inputs/dropdown.html'},
 		};
