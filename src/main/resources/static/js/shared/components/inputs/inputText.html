@@ -1,1 +1,9 @@
-<input class="form-control" ng-class="{'invalid': !$ctrl.valid}" type="{{$ctrl.type}}" id="{{$ctrl.question.questionId}}" id="question_{{$ctrl.question.questionId}}" ng-model="$ctrl.value" ng-value="$ctrl.value" ng-change="$ctrl.change()" ng-model-options="{updateOn: 'blur', allowInvalid: true}"/>
+<input class="form-control" 
+ng-class="{'invalid': !$ctrl.valid}" 
+type="{{$ctrl.type}}" 
+id="question_{{$ctrl.question.questionId}}"
+name="question_{{$ctrl.question.questionId}}"
+ng-model="$ctrl.value" 
+ng-value="$ctrl.value" 
+ng-change="$ctrl.change()"
+ng-model-options="{updateOn: 'blur', allowInvalid: true}"/>
