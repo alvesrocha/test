@@ -36,9 +36,11 @@ angular.module('form').factory('questionFactory', function() {
 					"ng-value=\"$ctrl.value\" " +
 					"ng-change=\"$ctrl.change()\" " +
 					"ng-model-options=\"{updateOn: 'blur'}\"";
+			/*
 			if(question.pattern !== undefined) {
 				input +=" pattern=\"" + question.pattern + "\"";
-			}		
+			}
+			*/		
 		}else if(question.questionType === 'dropdown') {
 			//<select class="form-control" id="{{$ctrl.question.questionId}}" ng-model="$ctrl.value" ng-change="$ctrl.change()" ng-options="label.labelDesc for label in $ctrl.question.labels"></select>
 			input +="<select " +
@@ -50,10 +52,11 @@ angular.module('form').factory('questionFactory', function() {
 		}
 		
 		if(question.requiered !== undefined){
-			input +=" required=\"" + question.requiered + "\"";
+			input +=" required\"";
 		}
 		input +="/>";
 	}
+	
 	
 	return questionFactory;
 });
