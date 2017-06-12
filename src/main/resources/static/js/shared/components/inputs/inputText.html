@@ -6,4 +6,5 @@ name="question_{{$ctrl.question.questionId}}"
 ng-model="$ctrl.value" 
 ng-value="$ctrl.value" 
 ng-change="$ctrl.change()"
+ng-disabled="$ctrl.question.disabled"
 ng-model-options="{updateOn: 'blur', allowInvalid: true}"/>

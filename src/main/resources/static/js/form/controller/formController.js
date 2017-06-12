@@ -12,6 +12,6 @@ module.controller('form', ['dataFactory', 'businessRules', function (dataFactory
 	}
 	
 	ctrl.runRules = function () {
-		businessRules.run(ctrl.data.rules, ctrl.values, ctrl.data.definition);
+		businessRules.run(ctrl.data.rules, ctrl.values, ctrl.data.questionsMap);
 	}
 }]);
