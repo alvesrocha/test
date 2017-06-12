@@ -1,4 +1,4 @@
-module.controller('form', ['dataFactory', function (dataFactory) {
+module.controller('form', ['dataFactory', 'businessRules', function (dataFactory, businessRules) {
 	var ctrl = this;
 	ctrl.message = 'Form loading...';
 
@@ -7,7 +7,11 @@ module.controller('form', ['dataFactory', function (dataFactory) {
 	
 	
 	ctrl.updateQuestion = function (question, values) {
-		ctrl.values[question.questionId] = values;
+		ctrl.values[question.questionName] = values;
+		ctrl.runRules();
 	}
 	
+	ctrl.runRules = function () {
+		businessRules.run(ctrl.data.rules, ctrl.values, ctrl.data.definition);
+	}
 }]);

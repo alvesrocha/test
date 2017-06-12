@@ -4,7 +4,7 @@ angular.module('form').factory('questionFactory', function() {
 	
 	var inputTypesMapping = {
 			text : {type:'text', template: 'js/shared/components/inputs/inputText.html'},
-			integer : {type:'number', template: 'js/shared/components/inputs/inputText.html', defPattern: '[0-9]*'},
+			integer : {type:'number', template: 'js/shared/components/inputs/inputText.html'},
 			real : {type:'number', template: 'js/shared/components/inputs/inputText.html'},
 			dropdown : {template: 'js/shared/components/inputs/dropdown.html'},
 		};
@@ -22,41 +22,6 @@ angular.module('form').factory('questionFactory', function() {
 		}
 		return inputTypesMapping.text.template;
 	}
-	
-	
-	questionFactory.input = function (question) {
-		var input = "";
-		//<input class="form-control" type="{{$ctrl.type}}" id="{{$ctrl.question.questionId}}" id="question_{{$ctrl.question.questionId}}" ng-model="$ctrl.value" ng-value="$ctrl.value" ng-change="$ctrl.change()" ng-model-options="{updateOn: 'blur', allowInvalid: true}"/>
-		if(question.questionType === 'text' || question.questionType === 'integer' || question.questionType === 'real') {
-			input +="<input " +
-					"class=\"form-control\" " +
-					"type=\"{{$ctrl.type}}\" " +
-					"id=\"question_{{$ctrl.question.questionId}}\" " +
-					"ng-model=\"$ctrl.value\" " +
-					"ng-value=\"$ctrl.value\" " +
-					"ng-change=\"$ctrl.change()\" " +
-					"ng-model-options=\"{updateOn: 'blur'}\"";
-			/*
-			if(question.pattern !== undefined) {
-				input +=" pattern=\"" + question.pattern + "\"";
-			}
-			*/		
-		}else if(question.questionType === 'dropdown') {
-			//<select class="form-control" id="{{$ctrl.question.questionId}}" ng-model="$ctrl.value" ng-change="$ctrl.change()" ng-options="label.labelDesc for label in $ctrl.question.labels"></select>
-			input +="<select " +
-			"class=\"form-control\" " +
-			"id=\"question_{{$ctrl.question.questionId}}\" " +
-			"ng-model=\"$ctrl.value\" " +
-			"ng-change=\"$ctrl.change()\" " +
-			"ng-options=\"label.labelDesc for label in $ctrl.question.labels\"";
-		}
-		
-		if(question.requiered !== undefined){
-			input +=" required\"";
-		}
-		input +="/>";
-	}
-	
 	
 	return questionFactory;
 });

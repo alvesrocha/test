@@ -86,10 +86,11 @@ angular.module('form').factory('dataFactory', [ '$http', function($http) {
 						} ]
 					} ]
 				}],
-				rules :{
-					businessConstraints: [],
-					//business
-				}
+				rules :[
+					{
+						expression : "'10' in A1", action : "excludeQuestions", params : ["A2"] 
+					}
+				]
 			}
 		}
 		return form;

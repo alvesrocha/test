@@ -1,4 +1,4 @@
 <h1>Form</h1>
 <form name="formGlobal">
-	<group ng-repeat="group in controller.data" group="group" on-update="controller.updateQuestion(question, values)"/>
+	<group ng-repeat="group in controller.data.definition" group="group" on-update="controller.updateQuestion(question, values)"/>
 </form>
