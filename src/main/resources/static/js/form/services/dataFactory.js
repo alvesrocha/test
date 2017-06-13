@@ -4,7 +4,6 @@ angular.module('form').factory('dataFactory', [ '$http', function($http) {
 	var dataFactory = {};
 
 	var form;
-	var rules;
 
 	dataFactory.getForm = function() {
 		if (form == null) {
@@ -20,13 +19,15 @@ angular.module('form').factory('dataFactory', [ '$http', function($http) {
 						max : 4,
 						min : 1,
 						required : true,
-						disabled : false
+						disabled : false,
+						answers : []
 					}, {
 						questionName : 'B1',
 						questionId : 2,
 						questionType : 'dropdown',
 						questionDesc : 'Question 2',
 						disabled : false,
+						answers : [],
 						labels : [ {
 							labelId : 1,
 							labelValue : '0',
@@ -47,13 +48,15 @@ angular.module('form').factory('dataFactory', [ '$http', function($http) {
 						questionId : 3,
 						questionType : 'text',
 						questionDesc : 'Question 3',
-						disabled : false
+						disabled : false,
+						answers : []
 					}, {
 						questionName : 'B2',
 						questionId : 4,
 						questionType : 'dropdown',
 						questionDesc : 'Question 4',
 						disabled : false,
+						answers : [],
 						labels : [ {
 							labelId : 1,
 							labelValue : '0',
@@ -78,13 +81,15 @@ angular.module('form').factory('dataFactory', [ '$http', function($http) {
 						min : 3,
 						required : true,
 						pattern : '[A-Za-z]+',
-						disabled : false
+						disabled : false,
+						answers : []
 					}, {
 						questionName : 'B3',
 						questionId : 6,
 						questionType : 'dropdown',
 						questionDesc : 'Question 6',
 						disabled : false,
+						answers : [],
 						labels : [ {
 							labelId : 1,
 							labelValue : '0',
@@ -100,21 +105,27 @@ angular.module('form').factory('dataFactory', [ '$http', function($http) {
 				}],
 				rules :[
 					{
+						expression : "1==1", action : "includeQuestions", params : ["A1", "B1", "A2", "B2", "A3", "B3"] 
+					},
+					{
 						expression : "'10' in A1", action : "excludeQuestions", params : ["A2"] 
 					}
 				],
 			}
 			
-			var map = new Map();
+			form.questions = {};
 			for(ig in form.definition) {
 				for(iq in form.definition[ig].questions) {
-					map.set(form.definition[ig].questions[iq].questionName, form.definition[ig].questions[iq]);
+					form.questions[form.definition[ig].questions[iq].questionName] = form.definition[ig].questions[iq];
 				}
 			}
-			form.questionsMap = map;
 		}
 		return form;
-	};
+	}
+	
+	dataFactory.addQuestionAnswers = function (questionName, answers) {
+		form.questions[questionName].answers = answers;
+	}
 
 	return dataFactory;
 

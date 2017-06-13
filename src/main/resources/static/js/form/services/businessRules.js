@@ -1,4 +1,4 @@
-angular.module('form').factory('businessRules', function() {
+angular.module('form').factory('businessRules', [ 'callbackService', function(callbackService) {
 
 	var businessRules = {};
 	var jexl = require('Jexl');
@@ -6,7 +6,8 @@ angular.module('form').factory('businessRules', function() {
 	businessRules.run = function(rules, context, components) {
 		for (index in rules) {
 			var rule = rules[index];
-			jexl.eval(rule.expression, context).then(function(res) {
+			jexl.eval(rule.expression, context).then(function(rule, context, res) {
+				console.log(context);
 				if (res) {
 					execute(rule.action, rule.params, components)
 				}
@@ -16,31 +17,22 @@ angular.module('form').factory('businessRules', function() {
 
 	function execute(action, params, components) {
 		switch (action) {
-		case 'excludeQuestions': excludeQuestions(params, components);
+		case 'excludeQuestions': setQuestionsStatus(params, components, true);
 			break;
-		case 'includeQuestions': includeQuestions(params, components);
+		case 'includeQuestions': setQuestionsStatus(params, components, false);
 			break;
 		}
 	}
 
-	function excludeQuestions(params, components) {
-		console.log("exclude " + params);
-		
-		/*var context = {'form' : components};
-		jexl.eval("form[.questions].questions[.questionName == 'A1']", context).then(function(question) {
-			console.log(question);
-			question.disable = true;
-		});
-		*/
-		components.get('A2').disabled = true;
-	}
-	
-	function includeQuestions(params, formDefinition) {
-		console.log("include " + params);
-		jexl.eval('questions[.questionName ==' + params[0] +']', context).then(function(question) {
-			console.log(question);
-		});
+	function setQuestionsStatus(params, components, disabled) {
+		for(i in params){
+			var component = components[params[i]];
+			if(component.disabled !== disabled) {
+				component.disabled = disabled;
+				callbackService.updateComponent(component);
+			}
+		}
 	}
 
 	return businessRules;
-});
+}]);
