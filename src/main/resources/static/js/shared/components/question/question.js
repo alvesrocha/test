@@ -45,7 +45,7 @@ function QuestionController($scope, questionFactory, validatorFactory, callbackS
 		if (ctrl.valid) {
 			ctrl.onUpdate({
 				question : ctrl.question,
-				values : [ ctrl.value ]
+				values : ["" + ctrl.value + ""]
 			});
 			ctrl.disabled = false;
 		}
