@@ -62,8 +62,8 @@ function QuestionController($scope, questionFactory, validatorFactory, callbackS
 	// subscribe components updated callback
 	callbackService.onComponentUpdated(function(component) {
 		if(component == ctrl.question) {
-			ctrl.question = component;
-			$scope.$apply();
+			//ctrl.question = component;
+			//$scope.$apply();
 		}
 	});
 

@@ -27,7 +27,7 @@ angular.module('form').factory('businessRules', [ 'callbackService', function(ca
 			var component = components[params[i]];
 			if(component.disabled !== disabled) {
 				component.disabled = disabled;
-				callbackService.updateComponent(component);
+				//callbackService.updateComponent(component);
 			}
 		}
 	}
