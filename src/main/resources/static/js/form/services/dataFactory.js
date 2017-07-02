@@ -105,10 +105,10 @@ angular.module('form').factory('dataFactory', [ '$http', function($http) {
 				}],
 				rules :[
 					{
-						expression : "1==1", action : "includeQuestions", params : ["A1", "B1", "A2", "B2", "A3", "B3"] 
+						expression :  {"==":[1, 1]}, action : "includeQuestions", params : ["A1", "B1", "A2", "B2", "A3", "B3"] 
 					},
 					{
-						expression : "'10' in A1", action : "excludeQuestions", params : ["A2"] 
+						expression : {"in":["10", {"var":"A1"}]}, action : "excludeQuestions", params : ["A2"] 
 					}
 				],
 			}

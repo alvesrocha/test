@@ -1,5 +1,5 @@
 angular
-		.module('hello', [ 'ngRoute', 'auth', 'home', 'message', 'form', 'navigation' ])
+		.module('hello', [ 'ngRoute', 'auth', 'home', 'message', 'form', 'registerUser', 'navigation' ])
 		.config(
 
 				function($routeProvider, $httpProvider, $locationProvider) {
@@ -22,6 +22,10 @@ angular
 						templateUrl : 'js/form/form.html',
 						controller : 'form',
 						controllerAs : 'controller'
+					}).when('/register', {
+						templateUrl : 'js/register/registerUser.html',
+						controller : 'registerUser',
+						controllerAs : 'controller'
 					}).otherwise('/');
 
 					$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -30,6 +34,6 @@ angular
 
 			// Initialize auth module with the home page and login/logout path
 			// respectively
-			auth.init('/', '/login', '/logout');
+			auth.init('/', '/login', '/logout', '/register');
 
 		});
