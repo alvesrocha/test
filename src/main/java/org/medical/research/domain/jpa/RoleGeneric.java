@@ -25,6 +25,10 @@ public class RoleGeneric {
 	@ManyToMany
 	@JoinTable(name = "MRC_GROUP_ROLES", joinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "ID"))
 	private Set<Group> groups;
+	
+	@ManyToMany
+	@JoinTable(name = "MRC_PROFILE_ROLES", joinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "PROFILE_ID", referencedColumnName = "ID"))
+	private Set<Profile> profiles;
 
 	@ManyToMany
 	@JoinTable(name = "MRC_USER_ROLES", joinColumns = @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"))
@@ -51,6 +55,14 @@ public class RoleGeneric {
 
 	public void setGroups(Set<Group> groups) {
 		this.groups = groups;
+	}
+
+	public Set<Profile> getProfiles() {
+		return profiles;
+	}
+
+	public void setProfiles(Set<Profile> profiles) {
+		this.profiles = profiles;
 	}
 
 	public Set<User> getUsers() {

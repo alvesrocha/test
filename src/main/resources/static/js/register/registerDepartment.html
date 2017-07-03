@@ -1,0 +1,11 @@
+<form name="form" role="form" ng-submit="controller.register()" novalidate>
+	<div class="form-group">
+		<label for="password">Clinic:</label>
+		<select class="form-control" id="clinic" ng-model="controller.department.clinic" ng-options="clinic.name for clinic in controller.clinics" required ng-class="{'invalid': form.$submitted && form.clinic.$error.required}"></select>
+	</div>
+	<div class="form-group">
+		<label for="username">Name:</label> 
+		<input type="text" class="form-control" id="name" name="name" ng-model="controller.department.name" required ng-class="{'invalid': form.$submitted && form.department.$error.required}"/>
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
