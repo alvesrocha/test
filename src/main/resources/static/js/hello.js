@@ -1,5 +1,5 @@
 angular
-		.module('hello', [ 'ngRoute', 'auth', 'home', 'message', 'form', 'registerUser', 'registerClinic', 'registerDept', 'navigation' ])
+		.module('hello', [ 'ngRoute', 'auth', 'home', 'message', 'form', 'registerUser', 'registerClinic', 'registerDept', 'navigation', 'ngAnimate', 'ngSanitize', 'ui.bootstrap'])
 		.config(
 
 				function($routeProvider, $httpProvider, $locationProvider) {
