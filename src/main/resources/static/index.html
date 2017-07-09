@@ -28,28 +28,74 @@
         <!-- Top content -->
         <div class="top-content">
             <div class="inner-bg">
-            	<div class="row" style="margin-top: -50px">
-	            	<div ng-controller="navigation as nav" class="container">
-		            	<div class="col-sm-6" style="float: left;">
-							<ul class="nav nav-pills" role="tablist">
-								<li ng-show="nav.authenticated()" ng-class="{active:nav.tab('home')}"><a href="/">home</a></li>
-								<li ng-show="nav.authenticated()" ng-class="{active:nav.tab('message')}"><a href="/message">message</a></li>
-								<li ng-show="nav.authenticated()" ng-class="{active:nav.tab('form')}"><a href="/form">form</a></li>
-							</ul>
+	            	<!-- div ng-controller="navigation as nav" class="container">
+		            	<div class="row" style="margin-top: -50px">
+			            	<div class="col-sm-8">
+			            		<div style="float: left;">
+									<ul class="nav nav-pills" role="tablist">
+										<li ng-show="nav.authenticated()" ng-class="{active:nav.tab('home')}"><a href="/">home</a></li>
+										<li ng-show="nav.authenticated()" ng-class="{active:nav.tab('admin')}"><a href="/message">Admin</a></li>
+										<li ng-show="nav.authenticated()" ng-class="{active:nav.tab('form')}"><a href="/form">Patient</a></li>
+									</ul>
+
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<ul class="nav nav-pills" style="float: right;" role="tablist">
+									<li ng-show="nav.authenticated()" ng-class="{active:nav.tab('form')}"><a href="/dept">My Account</a></li>
+									<li ng-show="nav.authenticated()"><a href="" ng-click="nav.logout()">logout</a></li>
+								</ul>
+							</div>
 						</div>
-						<div class="col-sm-6" style="float: right;">
-							<ul class="nav nav-pills" role="tablist">
-								<li ng-show="nav.authenticated()"><a href="/dept">register department</a></li>
-								<li ng-show="nav.authenticated()"><a href="" ng-click="nav.logout()">logout</a></li>
-							</ul>
-						</div>
-					</div>
+					</div -->
+				<div class="navbar-wrapper">
+				    <div class="container-fluid">
+				        <nav class="navbar navbar-fixed-top">
+				            <div ng-controller="navigation as nav" class="container">
+				                <div id="navbar" class="navbar-collapse collapse">
+				                    <ul class="nav navbar-nav">
+				                        <li class="active"><a href="#" class="">Home</a></li>
+				                         <li class=" dropdown">
+				                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clinics <span class="caret"></span></a>
+				                            <ul class="dropdown-menu">
+				                                <li class=" dropdown">
+				                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Departments</a>
+				                                </li>
+				                                <li><a href="#">Add New</a></li>
+				                            </ul>
+				                        </li>
+				                        <li class=" dropdown">
+				                            <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departments <span class="caret"></span></a>
+				                            <ul class="dropdown-menu">
+				                                <li class=" dropdown">
+				                                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Departments</a>
+				                                </li>
+				                                <li><a href="#">Add New</a></li>
+				                            </ul>
+				                        </li>
+				                        <li class=" dropdown" ng-show="nav.authenticated()"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Staff <span class="caret"></span></a>
+				                            <ul class="dropdown-menu">
+				                                <li><a href="#">View Staff</a></li>
+				                                <li><a href="#">Add New</a></li>
+				                                <li><a href="#">Bulk Upload</a></li>
+				                            </ul>
+				                        </li>
+				                    </ul>
+				                    <ul class="nav navbar-nav pull-right">
+				                        <li class=" dropdown" ng-show="nav.authenticated()"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as  <span class="caret"></span></a>
+				                            <ul class="dropdown-menu">
+				                                <li><a href="#">Change Password</a></li>
+				                                <li><a href="#">My Profile</a></li>
+				                            </ul>
+				                        </li>
+				                        <li class="" ng-show="nav.authenticated()"><a ng-click="nav.logout()" href="">Logout</a></li>
+				                    </ul>
+				                </div>
+				            </div>
+				        </nav>
+				    </div>
 				</div>
-				<div class="row">
-					<div>
-                		<div ng-view class="container"></div>
-                	</div>
-                </div>
+                <div ng-view class="container"></div>
             </div>
         </div>
 

@@ -179,18 +179,6 @@ img { max-width: 100%; }
 	border-color: #19b9e7;
 }
 
-.social-login {
-	margin-top: 35px;
-}
-
-.social-login h3 {
-	color: #fff;
-}
-
-.social-login-buttons {
-	margin-top: 25px;
-}
-
 .middle-border {
 	min-height: 300px;
 	margin-top: 170px;
@@ -230,9 +218,13 @@ footer a:hover, footer a:focus { color: #fff; border-bottom: 1px dotted #fff; }
 
 @media (max-width: 767px) {
 	
-	.middle-border { min-height: auto; margin: 65px 30px 0 30px; border-right: 0; 
-						border-top: 1px solid #fff; border-top: 1px solid rgba(255, 255, 255, 0.6); }
-	
+	.middle-border { 
+		min-height: auto; 
+		margin: 65px 30px 0 30px; 
+		border-right: 0; 
+		border-top: 1px solid #fff; 
+		border-top: 1px solid rgba(255, 255, 255, 0.6); 
+	}
 }
 
 @media (max-width: 415px) {
