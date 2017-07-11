@@ -1,7 +1,4 @@
-angular.module('navigation', [ 'ngRoute', 'auth' ]).controller(
-	'navigation',
-
-	function($route, auth) {
+angular.module('navigation', [ 'ngRoute', 'auth' ]).controller('navigation', function($route, auth) {
 
 		var self = this;
 

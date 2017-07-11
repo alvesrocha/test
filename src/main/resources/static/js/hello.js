@@ -1,5 +1,5 @@
 angular
-		.module('hello', [ 'ngRoute', 'auth', 'home', 'message', 'form', 'registerUser', 'registerClinic', 'registerDept', 'navigation', 'ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+		.module('hello', [ 'ngRoute', 'auth', 'home', 'message', 'form', 'registerUser', 'clinic', 'registerDept', 'navigation', 'ngAnimate', 'ngSanitize', 'ui.bootstrap'])
 		.config(
 
 				function($routeProvider, $httpProvider, $locationProvider) {
@@ -23,15 +23,15 @@ angular
 						controller : 'form',
 						controllerAs : 'controller'
 					}).when('/register', {
-						templateUrl : 'js/register/registerUser.html',
+						templateUrl : 'js/staff/registerUser.html',
 						controller : 'registerUser',
 						controllerAs : 'controller'
 					}).when('/clinic', {
-						templateUrl : 'js/register/registerClinic.html',
-						controller : 'registerClinic',
+						templateUrl : 'js/clinic/clinic.html',
+						controller : 'clinic',
 						controllerAs : 'controller'
 					}).when('/dept', {
-						templateUrl : 'js/register/registerDepartment.html',
+						templateUrl : 'js/department/registerDepartment.html',
 						controller : 'registerDept',
 						controllerAs : 'controller'
 					}).otherwise('/');

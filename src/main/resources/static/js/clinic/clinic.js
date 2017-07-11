@@ -1,4 +1,4 @@
-var module = angular.module('registerClinic', []);
+var module = angular.module('clinic', []);
 
 module.factory('registerClinicService', [ '$http', function($http) {
 	
@@ -25,7 +25,7 @@ module.factory('registerClinicService', [ '$http', function($http) {
 	return registerService;
 } ]);
 
-module.controller('registerClinic', [ 'registerClinicService', function(registerService) {
+module.controller('clinic', [ 'registerClinicService', function(registerService) {
 	var ctrl = this;
 	
 	ctrl.clinic = {};
