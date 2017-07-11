@@ -4,13 +4,22 @@
 			<div class="form-bottom">
 				<form role="form" ng-submit="controller.login()" class="login-form">
 		  			<div class="form-group">
-		  				<label class="sr-only" for="username">Username:</label> 
-		  				<input type="text" class="form-control" id="username" name="username" placeholder="Username" ng-model="controller.credentials.username"/>
+		  				<label class="sr-only" for="search">Search:</label> 
+		  				<input type="text" class="form-control" id="search" name="search" placeholder="Search" ng-model="controller.clinic.search"/>
 		      		</div>
 		      		<div class="form-group">
-		      			<label class="sr-only" for="password">Password</label>
-		      			<input type="password" name="password" placeholder="Password" class="form-password form-control" id="password" ng-model="controller.credentials.password">
-		      		</div>
+						<label for="password">Country:</label>
+						<select class="form-control" id="country" name="country" ng-model="controller.clinic.country" ng-options="country.name for country in controller.countries"></select>
+					</div>
+					<div class="form-group">
+						<label for="password">City:</label>
+						<select class="form-control" id="city" name="city" ng-model="controller.clinic.city" ng-options="city.name for city in controller.cities"></select>
+					</div>
+					<div class="form-group">
+						<label for="password">Clinic:</label>
+						<select class="form-control" id="clinic" name="clinic" ng-model="controller.searchClinic" ng-options="clinic.name for clinic in controller.clinics"></select>
+					</div>
+					<button type="button" class="btn btn-primary" >New clinic</button>
 		  		</form>
 			</div>
 		</div>
