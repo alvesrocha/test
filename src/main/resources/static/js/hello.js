@@ -1,5 +1,5 @@
 angular
-		.module('hello', [ 'ngRoute', 'auth', 'home', 'message', 'form', 'registerUser', 'clinic', 'registerDept', 'navigation', 'ngAnimate', 'ngSanitize', 'ui.bootstrap'])
+		.module('hello', [ 'ngRoute', 'auth', 'home', 'message', 'form', 'registerUser', 'clinic', 'registerDept', 'navigation', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngTable'])
 		.config(
 
 				function($routeProvider, $httpProvider, $locationProvider) {
@@ -29,7 +29,12 @@ angular
 					}).when('/clinic', {
 						templateUrl : 'js/clinic/clinic.html',
 						controller : 'clinic',
-						controllerAs : 'controller'
+						controllerAs : 'controller',
+						resolve: {
+							initialData: function(clinicInitialData){
+					            return clinicInitialData();
+					        }
+						}
 					}).when('/dept', {
 						templateUrl : 'js/department/registerDepartment.html',
 						controller : 'registerDept',

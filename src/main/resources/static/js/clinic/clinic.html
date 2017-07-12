@@ -2,24 +2,36 @@
     <div class="col-sm-4">
 		<div class="form-box">
 			<div class="form-bottom">
-				<form role="form" ng-submit="controller.login()" class="login-form">
+				<form role="form" class="login-form">
 		  			<div class="form-group">
 		  				<label class="sr-only" for="search">Search:</label> 
-		  				<input type="text" class="form-control" id="search" name="search" placeholder="Search" ng-model="controller.clinic.search"/>
+		  				<input type="text" class="form-control" id="search" name="search" placeholder="Search" ng-model="controller.clinicSearch.queryFilter"/>
+		  				<md-autocomplete ng-disabled="false" md-no-cache="ctrl.noCache"
+					          md-selected-item="ctrl.selectedItem"
+					          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+					          md-search-text="ctrl.searchText"
+					          md-selected-item-change="ctrl.selectedItemChange(item)"
+					          md-items="item in ctrl.querySearch(ctrl.searchText)"
+					          md-item-text="item.display"
+					          md-min-length="0"
+					          placeholder="What is your favorite US state?">
+					        <md-item-template>
+					          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+					        </md-item-template>
+					        <md-not-found>
+					          No states matching "{{ctrl.searchText}}" were found.
+					          <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+					        </md-not-found>
+					      </md-autocomplete>
 		      		</div>
 		      		<div class="form-group">
-						<label for="password">Country:</label>
-						<select class="form-control" id="country" name="country" ng-model="controller.clinic.country" ng-options="country.name for country in controller.countries"></select>
+						<label for="country">Country:</label>
+						<select class="form-control" id="country" name="country" ng-model="controller.clinicSearch.country" ng-change="controller.loadCities()" ng-options="country.name for country in controller.clinicSearch.countries"></select>
 					</div>
 					<div class="form-group">
-						<label for="password">City:</label>
-						<select class="form-control" id="city" name="city" ng-model="controller.clinic.city" ng-options="city.name for city in controller.cities"></select>
+						<label for="city">City:</label>
+						<select class="form-control" id="city" name="city" ng-model="controller.clinicSearch.city" ng-options="city.name for city in controller.clinicSearch.cities"></select>
 					</div>
-					<div class="form-group">
-						<label for="password">Clinic:</label>
-						<select class="form-control" id="clinic" name="clinic" ng-model="controller.searchClinic" ng-options="clinic.name for clinic in controller.clinics"></select>
-					</div>
-					<button type="button" class="btn btn-primary" >New clinic</button>
 		  		</form>
 			</div>
 		</div>
@@ -28,17 +40,14 @@
     <div class="col-sm-8">
 	   	<div class="form-box">
 	        <div class="form-bottom">
-				<form name="form" role="form" novalidate>
-					<div class="form-group">
-						<label for="username">Name:</label> 
-						<input type="text" class="form-control" id="name" name="name" ng-model="controller.clinic.name" required ng-class="{'invalid': form.$submitted && form.name.$error.required}"/>
-					</div>
-					<div class="form-group">
-						<label for="password">Country:</label>
-						<select class="form-control" id="country" name="country" ng-model="controller.clinic.country" ng-options="country.name for country in controller.countries" required ng-class="{'invalid': form.$submitted && form.country.$error.required}"></select>
-					</div>
-					<button type="submit" class="btn btn-primary" data-ng-click="form.$valid ? controller.register() : ''">Submit</button>
-				</form>
+	        	<table ng-table="vm.tableParams" class="table" show-filter="true">
+				    <tr ng-repeat="user in $data">
+				        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+				            {{user.name}}</td>
+				        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+				            {{user.age}}</td>
+				    </tr>
+				</table>
 			</div>
 		</div>
 	</div>
